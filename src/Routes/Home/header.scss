@@ -1,0 +1,17 @@
+.header-container {
+
+    .option-nav {
+        display: flex;
+        color: white;
+        justify-content: space-between;
+        width: 300px;
+
+        & .active {
+            color: red;
+        }
+
+        & .nav-item:hover {
+            color: red;
+        }
+    }
+}

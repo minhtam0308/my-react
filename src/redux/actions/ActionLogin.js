@@ -14,11 +14,16 @@ const ActionLoginFail = (data) => ({
     payload: data
 })
 
+const ActionLogOut = () => ({
+    type: USER_LOGOUT,
+    payload: null
+})
 
 export {
     USER_LOGIN_SUCESS,
     USER_LOGIN_FAIL,
     USER_LOGOUT,
     ActionLoginSuccess,
-    ActionLoginFail
+    ActionLoginFail,
+    ActionLogOut
 }

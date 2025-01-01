@@ -13,12 +13,12 @@ import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
-import { LoginService } from '../service/UserService';
+import { LoginService } from '../../service/UserService';
 import { useDispatch } from 'react-redux';
-import { ActionLoginSuccess } from '../redux/actions/ActionLogin';
+import { ActionLoginSuccess } from '../../redux/actions/ActionLogin';
 import { useNavigate } from 'react-router-dom';
 
-import { store } from '../redux/store';
+import { store } from '../../redux/store';
 
 const Login = (props) => {
 
