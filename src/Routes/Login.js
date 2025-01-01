@@ -13,11 +13,22 @@ import { AiFillTwitterSquare } from "react-icons/ai";
 import { FaRegEyeSlash } from "react-icons/fa";
 import { FaRegEye } from "react-icons/fa";
 
-const Login = () => {
+import { LoginService } from '../service/UserService';
+import { useDispatch } from 'react-redux';
+import { ActionLoginSuccess } from '../redux/actions/ActionLogin';
+import { useNavigate } from 'react-router-dom';
+
+import { store } from '../redux/store';
+
+const Login = (props) => {
 
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [isShowPass, setIsShowPass] = useState(false);
+    const [unEOP, setUnEOP] = useState('')
+
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     const handleChangeemail = (event) => {
         setEmail(event.target.value)
@@ -25,6 +36,29 @@ const Login = () => {
 
     const handleChangePassword = (event) => {
         setPassword(event.target.value)
+    }
+    const HandleLogin = async () => {
+        //check validate
+        if (!email || !password) {
+            setUnEOP('You need to write both email and password! ');
+            return;
+        }
+        try {
+            let res = await LoginService(email, password);
+            if (res.errCode === 0) {
+                dispatch(ActionLoginSuccess(res.user))
+                setUnEOP('');
+                props.setIsLogin(store.getState().isLogin)
+                console.log(props.isLogin)
+                navigate('/');
+
+            } else {
+                setUnEOP(res.errMessage);
+            }
+        } catch (e) {
+            console.log(e)
+        }
+
     }
     return (
         <>
@@ -41,7 +75,7 @@ const Login = () => {
                             </div>
                         </div>
                         <div className="card-body">
-
+                            <div className='incorrect' style={{ color: 'red' }}>{unEOP ? unEOP : ''}</div>
                             <div className="input-group form-group">
                                 <div className="input-group-prepend">
                                     <span className="input-group-text"><FaUser size="2em" /></span>
@@ -80,7 +114,9 @@ const Login = () => {
                                 <input type="checkbox" />Remember Me
                             </div>
                             <div className="form-group">
-                                <a type="button" className="btn btn-warning" href='home'>Log In</a>
+                                <a type="button"
+                                    className="btn btn-warning"
+                                    onClick={() => HandleLogin()}>Log In</a>
                             </div>
 
                         </div>
