@@ -8,7 +8,7 @@ import Layout from './Layout';
 function App() {
   return (
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate loading={null} persistor={persistor}> {/*delays rendering your app's UI until your persisted state has been retrieved and saved to redux. */}
         <Layout />
       </PersistGate>
     </Provider>

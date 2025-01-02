@@ -10,6 +10,12 @@ const LoginService = async (email, password) => {
 
 }
 
+const getAllQuizService = async () => {
+    let res = await axios.get('api/getQuizByUser');
+    return res;
+}
+
 export {
-    LoginService
+    LoginService,
+    getAllQuizService
 }

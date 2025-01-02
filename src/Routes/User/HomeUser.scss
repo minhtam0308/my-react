@@ -1,0 +1,20 @@
+.Home-container {
+    background-image: url('../../../public/bgHome.jpg');
+    background-color: #cccccc;
+    height: calc(100vh - 70px);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+
+    h1 {
+
+        margin: auto;
+        width: 500px;
+    }
+
+    .goquiz {
+        position: relative;
+        top: 119px;
+        left: 112px;
+    }
+}
