@@ -16,7 +16,6 @@ import CreateQuiz from './Routes/Admin/CreateQuiz';
 const Layout = () => {
 
     const [isLogin, setIsLogin] = useState(store.getState().isLogin);
-    console.log(store.getState());
     return (
         <>
             {isLogin ?
